@@ -4,23 +4,35 @@
     <title>Sorting.Space</title>
 </head>
 <body>
-<h1>Sorting.Space</h1>
-<table>
-    <thead>
-        <tr>
-            <th scope="col">A</th>
-            <td></td>
-            <th scope="col">B</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td id="a"></td>
-            <td>or</td>
-            <td id="b"></td>
-        </tr>
-    </tbody>
-</table>
 <script src="j/wsSort.js"></script>
+<h1>Sorting.Space</h1>
+<div id="build" style="display: none; background-color: #CCC;"></div>
+<div id="rank" style="display: block; background-color: #FF9;">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">A</th>
+                <td></td>
+                <th scope="col">B</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <button id="a"></button>
+                </td>
+                <td>
+                    or
+                </td>
+                <td>
+                    <button id="b"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="result" style="display: none; background-color: #99F;">
+    <ol id="result_list"></ol>
+</div>
 </body>
 </html>
