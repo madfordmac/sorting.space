@@ -48,6 +48,6 @@ async def sorter(websocket: websockets.WebSocketServerProtocol) -> None:
         'type': 'result',
         'data': data
     }))
-    logger.info(f'Successfully finished run #{run_id:s} \
-                of {len(data):d} items \
-                    in {timedelta(seconds=time.time() - start_time)!s}.')
+    logger.info(f'Successfully finished run #{run_id:s} ' + \
+                f'of {len(data):d} items ' + \
+                f'in {timedelta(seconds=time.time() - start_time)!s}.')
