@@ -3,11 +3,19 @@
 <head>
     <title>Sorting.Space</title>
 </head>
-<body>
+<body style="background-color: white; color: black;">
 <script src="j/wsSort.js"></script>
 <h1>Sorting.Space</h1>
-<div id="build" style="display: none; background-color: #CCC;"></div>
-<div id="rank" style="display: block; background-color: #FF9;">
+<div id="build" style="display: block; background-color: #CCC;">
+    <ol id="input_list">
+        <li>
+            <input type="text" value="McDonald's">
+        </li>
+    </ol>
+    <button id="plus">+</button>
+    <button id="sortbtn">Start sorting!</button>
+</div>
+<div id="rank" style="display: none; background-color: #FF9;">
     <table>
         <thead>
             <tr>

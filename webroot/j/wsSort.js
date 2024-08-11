@@ -1,6 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
+    // Open web socket
     const websocket = new WebSocket("ws://localhost:9832/");
-    websocket.onopen = () => websocket.send(JSON.stringify({
+
+    // Debug action auto-submits a list
+    /* websocket.onopen = () => websocket.send(JSON.stringify({
         "type": "hello",
         "data": [
             "McDonald's",
@@ -10,8 +13,9 @@ window.addEventListener("DOMContentLoaded", () => {
             "Taco Bell",
             "Dairy Queen"
         ]
-    }));
+    })); */
 
+    // Respond to incoming messages
     websocket.onmessage = ({data}) => {
         const mesg = JSON.parse(data);
         switch(mesg.type) {
@@ -40,6 +44,37 @@ window.addEventListener("DOMContentLoaded", () => {
         };
     };
 
+    // Function to add a new item to the input list
+    const addItem = () => {
+        const new_li = document.createElement("li");
+        const new_input = document.createElement("input");
+        new_input.type = "text";
+        new_li.appendChild(new_input);
+        document.getElementById("input_list").appendChild(new_li);
+    };
+
+    // Add action to the "+" button
+    document.getElementById("plus").onclick = addItem;
+
+    // Function to submit the list of items
+    const submitList = () => {
+        const data = [];
+        const node_list = document.querySelectorAll('ol#input_list li');
+        node_list.forEach((li) => {
+            data.push(li.firstElementChild.value);
+        });
+        websocket.send(JSON.stringify({
+            "type": "hello",
+            "data": data
+        }));
+        document.getElementById("build").style.display = "none";
+        document.getElementById("rank").style.display = "block";
+    };
+
+    // Add action to the "Submit" button
+    document.getElementById("sortbtn").onclick = submitList;
+
+    // Add action to the "Choose A" button
     document.getElementById("a").onclick = () => {
         websocket.send(JSON.stringify({
             "type": "answer",
@@ -47,6 +82,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }));
     };
 
+    // Add action to the "Choose B" button
     document.getElementById("b").onclick = () => {
         websocket.send(JSON.stringify({
             "type": "answer",

@@ -29,7 +29,7 @@ async def sorter(websocket: websockets.WebSocketServerProtocol) -> None:
             if type(element) != str:
                 logger.error(f"Data element «{element!r}» not a string.")
                 raise RuntimeError("Non-string data element found in hello message.")
-        logger.debug('Hello message passes validation.')
+        logger.debug(f'Hello message passes validation. {len(data):d} items to sort.')
         await wsQuicksort(data, 0, len(data) - 1, websocket)
     except RuntimeError as e:
         logger.error(f"Runtime exception received from wsQuicksort. Ending run #{run_id:s}.", exc_info=True)
