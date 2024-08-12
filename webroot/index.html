@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <title>Sorting.Space</title>
 </head>
-<body style="background-color: white; color: black;">
+<body>
 <script src="j/wsSort.js"></script>
+<div class="container m-2">
 <h1>Sorting.Space</h1>
-<div id="build" style="display: block; background-color: #CCC;">
-    <ol id="input_list">
-        <li>
-            <input type="text" value="McDonald's">
-        </li>
-    </ol>
-    <button id="plus">+</button>
-    <button id="sortbtn">Start sorting!</button>
-</div>
-<div id="rank" style="display: none; background-color: #FF9;">
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">A</th>
-                <td></td>
-                <th scope="col">B</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <button id="a"></button>
-                </td>
-                <td>
-                    or
-                </td>
-                <td>
-                    <button id="b"></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div id="result" style="display: none; background-color: #99F;">
-    <ol id="result_list"></ol>
-</div>
+<ul class="tab">
+    <li class="tab-item active" id="sort-tab-li">
+        <a href="#" id="sort-tab-a">Sort</a>
+    </li>
+    <li class="tab-item" id="about-tab-li">
+        <a href="#" id="about-tab-a">About</a>
+    </li>
+</ul>
+<div class="container d-block" id="sort-tab-div">
+    <div id="build" style="display: block;" class="card">
+        <div class="card-header">
+            <div class="card-title h5">List Items</div>
+            <div class="card-subtitle text-gray">Enter items to sort:</div>
+        </div>
+        <div class="card-body">
+            <ol id="input_list">
+                <li>
+                    <input type="text" placeholder="McDonald's">
+                </li>
+            </ol>
+            <button id="plus" class="icon icon-plus">+</button>
+        </div>
+        <div class="card-footer">
+            <button id="sortbtn" class="icon icon-resize-virt">Start sorting!</button>
+        </div>
+    </div>
+    <div id="rank" style="display: none;" class="columns">
+        <div id="div-a" class="column">
+            <button id="a" class="btn btn-primary"></button>
+        </div>
+        <div class="divider-vert" data-content="OR"></div>
+        <div id="div-b" class="column">
+            <button id="b" class="btn btn-primary"></button>
+        </div>
+    </div>
+    <div id="result" style="display: none;">
+        <ol id="result_list"></ol>
+    </div>
+</div> <!-- sort tab -->
+<div class="container d-none" id="about-tab-div">
+    <h2>About this space</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci modi ipsa ipsam incidunt delectus deserunt nesciunt dolor itaque, unde dicta ea iste quae laboriosam expedita numquam ex eius quidem officiis.</p>
+</div> <!-- about tab -->
+</div> <!-- parent container -->
 </body>
 </html>

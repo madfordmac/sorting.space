@@ -44,6 +44,39 @@ window.addEventListener("DOMContentLoaded", () => {
         };
     };
 
+    /*┏━━━━━━━━━━━━━━━━━┓
+      ┃                 ┃
+      ┃  Tab Functions  ┃
+      ┃                 ┃
+      ┗━━━━━━━━━━━━━━━━━┛*/
+    const tab_list = [
+        "sort-tab",
+        "about-tab"
+    ];
+
+    const setActiveTab = (active) => {
+        for (const tab of tab_list) {
+            const tab_div = document.getElementById(tab + "-div");
+            const tab_li = document.getElementById(tab + "-li")
+            if (tab == active) {
+                tab_div.classList.remove("d-none");
+                tab_div.classList.add("d-block");
+                tab_li.classList.add("active");
+            }
+            else {
+                tab_div.classList.remove("d-block");
+                tab_div.classList.add("d-none")
+                tab_li.classList.remove("active");
+            }
+        }
+    };
+
+    for (const tab of tab_list) {
+        document.getElementById(tab + "-a").onclick = () => {
+            setActiveTab(tab);
+        }
+    };
+
     // Function to add a new item to the input list
     const addItem = () => {
         const new_li = document.createElement("li");
