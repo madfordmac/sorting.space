@@ -30,8 +30,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("b").textContent = mesg.b;
                 break;
             case "result":
-                document.getElementById("rank").style.display = "none";
-                document.getElementById("result").style.display = "block";
+                document.getElementById("rank").classList.add("d-none");
+                document.getElementById("result").classList.remove("d-none");
                 const result_list = document.getElementById("result_list");
                 for (const item_text of mesg.data) {
                     const list_item = document.createElement("li");
@@ -60,11 +60,9 @@ window.addEventListener("DOMContentLoaded", () => {
             const tab_li = document.getElementById(tab + "-li")
             if (tab == active) {
                 tab_div.classList.remove("d-none");
-                tab_div.classList.add("d-block");
                 tab_li.classList.add("active");
             }
             else {
-                tab_div.classList.remove("d-block");
                 tab_div.classList.add("d-none")
                 tab_li.classList.remove("active");
             }
@@ -100,8 +98,8 @@ window.addEventListener("DOMContentLoaded", () => {
             "type": "hello",
             "data": data
         }));
-        document.getElementById("build").style.display = "none";
-        document.getElementById("rank").style.display = "block";
+        document.getElementById("build").classList.add("d-none");
+        document.getElementById("rank").classList.remove("d-none");
     };
 
     // Add action to the "Submit" button

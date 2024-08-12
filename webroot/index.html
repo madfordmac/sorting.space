@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <title>Sorting.Space</title>
 </head>
@@ -16,36 +17,62 @@
         <a href="#" id="about-tab-a">About</a>
     </li>
 </ul>
-<div class="container d-block" id="sort-tab-div">
-    <div id="build" style="display: block;" class="card">
-        <div class="card-header">
-            <div class="card-title h5">List Items</div>
-            <div class="card-subtitle text-gray">Enter items to sort:</div>
+<div class="container" id="sort-tab-div">
+    <div id="build" class="columns">
+        <div class="column col-sm-12 col-md-6 col-4">
+            <div class="card-header">
+                <div class="card-title h5">List Items</div>
+                <div class="card-subtitle text-gray">Enter items to sort:</div>
+            </div>
+            <div class="card-body">
+                <ol id="input_list">
+                    <li>
+                        <input type="text" placeholder="McDonald's">
+                    </li>
+                </ol>
+                <button id="plus" class="icon icon-plus">+</button>
+            </div>
+            <div class="card-footer">
+                <button id="sortbtn" class="icon icon-resize-virt">Start sorting!</button>
+            </div>
         </div>
-        <div class="card-body">
-            <ol id="input_list">
-                <li>
-                    <input type="text" placeholder="McDonald's">
-                </li>
-            </ol>
-            <button id="plus" class="icon icon-plus">+</button>
+        <div class="column col-sm-12 col-md-6 col-4">
+            <h5>Help</h5>
+            <p>ℹ️</p>
         </div>
-        <div class="card-footer">
-            <button id="sortbtn" class="icon icon-resize-virt">Start sorting!</button>
+        <div class="column col-sm-12 col-md-12 col-4">
+            <p>Ads? Picture?</p>
         </div>
-    </div>
-    <div id="rank" style="display: none;" class="columns">
-        <div id="div-a" class="column">
-            <button id="a" class="btn btn-primary"></button>
+    </div> <!-- build div -->
+    <div id="rank" class="columns d-none">
+        <div class="column col-sm-12 col-md-6 col-4">
+            <div class="columns">
+                <div id="div-a" class="column col-5">
+                    <button id="a" class="btn btn-primary p-centered"></button>
+                </div>
+                <div class="divider-vert" data-content="OR"></div>
+                <div id="div-b" class="column col-5">
+                    <button id="b" class="btn btn-primary p-centered"></button>
+                </div>
+            </div>
         </div>
-        <div class="divider-vert" data-content="OR"></div>
-        <div id="div-b" class="column">
-            <button id="b" class="btn btn-primary"></button>
+        <div class="column col-sm-12 col-md-6 col-4">
+            <h5>Help</h5>
+            <p>ℹ️</p>
         </div>
-    </div>
-    <div id="result" style="display: none;">
-        <ol id="result_list"></ol>
-    </div>
+        <div class="column col-sm-12 col-md-12 col-4">
+            <p>Picture? Ads?</p>
+        </div>
+    </div> <!-- rank div -->
+    <div id="result" class="columns d-none">
+        <div class="column col-sm-12 col-md-6 col-4">
+            <ol id="result_list"></ol>
+        </div>
+        <div class="column col-sm-12 col-md-6 col-8">
+            <h5>🎉 Party time!</h5>
+            <p>Add some cool stuff to do here…</p>
+        </div>
+    </div> <!-- result div -->
 </div> <!-- sort tab -->
 <div class="container d-none" id="about-tab-div">
     <h2>About this space</h2>
