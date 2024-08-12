@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import websockets
+import socket
 from . import sorter
 import asyncio
 import logging
@@ -28,9 +29,17 @@ async def main() -> None:
         logger.addHandler(handlr)
     logger.info("👀 Logging started for sortd Websocket daemon.")
     
-    # Serve the socket
-    async with websockets.serve(sorter, 'localhost', 9832):
-        await asyncio.Future()
+    # Figure out the socket situation
+    fd_count = int(os.getenv('LISTEN_FDS', 0))
+    if fd_count > 0: # Starting via systemd.
+        sock = socket.socket(fileno=3)
+        async with websockets.unix_serve(sorter, path=None, sock=sock):
+            logger.info(f'Listening for connections on {sock.getsockname():s}')
+            await asyncio.Future()
+    else: # No systemd info. Serve ourselves, bound to localhost.
+        async with websockets.serve(sorter, 'localhost', 9832):
+            logger.info("Listening for connections on ws://localhost:9832")
+            await asyncio.Future()
 
 if __name__ == '__main__':
     asyncio.run(main())
