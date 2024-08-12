@@ -1,0 +1,11 @@
+[Unit]
+Description=Sortd socket %i
+
+[Socket]
+RuntimeDirectory=sortd
+ListenStream=/run/sortd/sortd%i.sock
+SocketUser=www-data
+SocketMode=0600
+
+[Install]
+WantedBy=sockets.target
