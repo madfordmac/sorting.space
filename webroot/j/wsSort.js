@@ -68,7 +68,11 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.log(`Error ${err} getting lists: ${data}`);
             }
             else {
-                data.forEach(addItem);
+                console.log(data);
+                data.forEach((value, index, array) => {
+                    console.log(value);
+                    addItem(value);
+                });
             }
         })
     }
@@ -110,7 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const new_input = document.createElement("input");
         new_input.type = "text";
         if (text) {
-            new_input.textContent = text;
+            new_input.value = text;
         }
         new_li.appendChild(new_input);
         document.getElementById("input_list").appendChild(new_li);
