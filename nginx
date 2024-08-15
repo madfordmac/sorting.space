@@ -18,3 +18,15 @@ server {
         proxy_set_header    Connection $http_connection;
     }
 }
+
+server {
+    listen 80;
+    server_name sorting.space;
+    access_log /var/log/nginx/sorting.space_access.log;
+    error_log /var/log/nginx/sorting.space_error.log;
+
+    location / {
+        root /usr/local/sortd/webroot;
+        allow all;
+    }
+}
