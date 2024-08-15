@@ -1,0 +1,20 @@
+upstream websocket {
+    least_conn;
+    server unix:/run/sortd/sortd1.sock;
+    server unix:/run/sortd/sortd2.sock;
+}
+
+server {
+    listen 9832;
+    listen [::]:9832;
+    server_name sorting.space;
+    access_log /var/log/nginx/sorting.space_socket_access.log;
+    error_log /var/log/nginx/sorting.space_socket_error.log;
+
+    location / {
+        proxy_pass          http://websocket;
+        proxy_http_version  1.1;
+        proxy_set_header    Upgrade $http_upgrade;
+        proxy_set_header    Connection $http_connection;
+    }
+}

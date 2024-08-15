@@ -6,7 +6,7 @@ After=network.target
 [Service]
 WorkingDirectory=/usr/local/sortd
 DynamicUser=yes
-ExecStart=venv/bin/python3 -m sortd
+ExecStart=/usr/local/sortd/venv/bin/python3 -m sortd
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
