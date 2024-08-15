@@ -44,6 +44,35 @@ window.addEventListener("DOMContentLoaded", () => {
         };
     };
 
+    const getJSON = (url, callback) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = () => {
+            const status = xhr.status;
+            if (status === 200) {
+                callback(null, xhr.response);
+            }
+            else {
+                callback(status, xhr.response);
+            }
+        };
+        xhr.send();
+    };
+
+    const args = new URLSearchParams(window.location.search);
+    const list = args.get("list");
+    if (list) {
+        getJSON(`/lists/${list}.json`, (err, data) => {
+            if (err !== null) {
+                console.log(`Error ${err} getting lists: ${data}`);
+            }
+            else {
+                data.forEach(addItem);
+            }
+        })
+    }
+
     /*┏━━━━━━━━━━━━━━━━━┓
       ┃                 ┃
       ┃  Tab Functions  ┃
@@ -76,10 +105,13 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     // Function to add a new item to the input list
-    const addItem = () => {
+    const addItem = (text) => {
         const new_li = document.createElement("li");
         const new_input = document.createElement("input");
         new_input.type = "text";
+        if (text) {
+            new_input.textContent = text;
+        }
         new_li.appendChild(new_input);
         document.getElementById("input_list").appendChild(new_li);
     };
