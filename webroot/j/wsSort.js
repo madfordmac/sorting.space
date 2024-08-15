@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     // Open web socket
-    const websocket = new WebSocket("ws://localhost:9832/");
+    const websocket = new WebSocket(`ws://${window.location.hostname}:9832/`);
 
     // Debug action auto-submits a list
     /* websocket.onopen = () => websocket.send(JSON.stringify({
