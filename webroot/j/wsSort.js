@@ -126,7 +126,9 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     // Add action to the "+" button
-    document.getElementById("plus").onclick = addItem;
+    document.getElementById("plus").onclick = () => {
+        addItem("");
+    };
 
     // Function to submit the list of items
     const submitList = () => {
