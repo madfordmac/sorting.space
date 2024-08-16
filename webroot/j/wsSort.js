@@ -68,10 +68,15 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.log(`Error ${err} getting lists: ${data}`);
             }
             else {
-                console.log(data);
+                let first = true;
                 data.forEach((value, index, array) => {
-                    console.log(value);
-                    addItem(value);
+                    if (first) {
+                        document.getElementById("input_list").querySelector("input").value = value;
+                        first = false;
+                    }
+                    else {
+                        addItem(value);
+                    };
                 });
             }
         })
