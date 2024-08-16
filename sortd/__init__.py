@@ -39,10 +39,10 @@ async def sorter(websocket: websockets.WebSocketServerProtocol) -> None:
         }))
         return
     except websockets.exceptions.ConnectionClosedOK as e:
-        logger.info(f"Client hung up. 😞")
+        logger.info(f"Client hung up. 👋🏻")
         return
     except websockets.exceptions.ConnectionClosedError as e:
-        logger.warning(f"Connection closed unexpectedly: {e!s}")
+        logger.warning(f"Connection closed unexpectedly: 😞{e!s}")
         return
     await websocket.send(json.dumps({
         'type': 'result',
