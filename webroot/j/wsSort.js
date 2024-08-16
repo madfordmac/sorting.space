@@ -114,15 +114,36 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     // Function to add a new item to the input list
+    let nx_id = 2;
     const addItem = (text) => {
+        const item_id = `option-${nx_id}`;
         const new_li = document.createElement("li");
+        new_li.id = item_id;
         const new_input = document.createElement("input");
         new_input.type = "text";
         if (text) {
             new_input.value = text;
         }
         new_li.appendChild(new_input);
+        const new_dbtn = document.createElement("button");
+        new_dbtn.classList.add("btn", "btn-error");
+        new_dbtn.onclick = () => {
+            delItem(item_id);
+        }
+        const delete_icon = document.createElement("i");
+        delete_icon.classList.add("icon", "icon-delete");
+        new_dbtn.appendChild(delete_icon);
+        new_li.appendChild(new_dbtn);
+        nx_id += 1;
         document.getElementById("input_list").appendChild(new_li);
+    };
+
+    // Function to delete an item from the input list
+    const delItem = (item) => {
+        document.getElementById(item).remove();
+    };
+    document.getElementById("option-1").querySelector("button").onclick = () => {
+        delItem("option-1");
     };
 
     // Add action to the "+" button

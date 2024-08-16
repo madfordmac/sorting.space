@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     <title>Sorting.Space</title>
 </head>
 <body>
@@ -26,14 +27,17 @@
             </div>
             <div class="card-body">
                 <ol id="input_list">
-                    <li>
+                    <li id="option-1">
                         <input type="text" placeholder="McDonald's">
+                        <button class="btn btn-error">
+                            <i class="icon icon-delete"></i>
+                        </button>
                     </li>
                 </ol>
-                <button id="plus" class="icon icon-plus">+</button>
+                <button id="plus" class="btn"><i class="icon icon-plus"></i></button>
             </div>
             <div class="card-footer">
-                <button id="sortbtn" class="icon icon-resize-virt">Start sorting!</button>
+                <button id="sortbtn" class="btn btn-primary">Start sorting!</button>
             </div>
         </div>
         <div class="column col-sm-12 col-md-6 col-4">
@@ -46,14 +50,12 @@
     </div> <!-- build div -->
     <div id="rank" class="columns d-none">
         <div class="column col-sm-12 col-md-6 col-4">
-            <div class="columns">
-                <div id="div-a" class="column col-5">
-                    <button id="a" class="btn btn-primary p-centered"></button>
-                </div>
-                <div class="divider-vert" data-content="OR"></div>
-                <div id="div-b" class="column col-5">
-                    <button id="b" class="btn btn-primary p-centered"></button>
-                </div>
+            <div id="div-a">
+                <button id="a" class="btn btn-primary p-centered"></button>
+            </div>
+            <div class="divider" data-content="OR"></div>
+            <div id="div-b">
+                <button id="b" class="btn btn-primary p-centered"></button>
             </div>
         </div>
         <div class="column col-sm-12 col-md-6 col-4">
