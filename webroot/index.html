@@ -22,28 +22,42 @@
 <div class="container" id="sort-tab-div">
     <div id="build" class="columns">
         <div class="column col-sm-12 col-md-6 col-4">
-            <div class="card-header">
-                <div class="card-title h5">List Items</div>
-                <div class="card-subtitle text-gray">Enter items to sort:</div>
-            </div>
-            <div class="card-body">
-                <ol id="input_list">
-                    <li id="option-1">
-                        <input type="text" placeholder="McDonald's">
-                        <button class="btn btn-error">
-                            <i class="icon icon-delete"></i>
-                        </button>
-                    </li>
-                </ol>
-                <button id="plus" class="btn"><i class="icon icon-plus"></i></button>
-            </div>
-            <div class="card-footer">
-                <button id="sortbtn" class="btn btn-primary">Start sorting!</button>
-            </div>
+            <h5>List Items</h5>
+            <h6 class="text-gray">Enter items to sort:</h6>
+            <ol id="input_list">
+                <li id="option-1">
+                    <input type="text" placeholder="McDonald's">
+                    <button class="btn btn-error">
+                        <i class="icon icon-delete"></i>
+                    </button>
+                </li>
+            </ol>
+            <button id="plus" class="btn"><i class="icon icon-plus"></i></button>
+            <button id="sortbtn" class="btn btn-primary">Start sorting!</button>
         </div>
         <div class="column col-sm-12 col-md-6 col-4">
             <h5>Help</h5>
-            <p>ℹ️</p>
+            <p>
+                ℹ️ Having trouble picking from a list of things (like which of several restaurants to order from)
+                or getting the order right in your top 10 list (like your favorite Taylor Swift songs)? Make the
+                decisions easier!
+            </p>
+            <p>
+                When given multiple options, humans have a hard time giving each item its due attention. But the
+                problem can be made simpler. If you've ever sorted an Excel spreadsheet or ordered your Amazon results
+                with the least expensive items first, you've had a computer using a <em>sorting algorithm.</em> —
+                breaking the list down into many comparisons of just two items. That works well for people, too. It's
+                much easier to pick your favorite of two items than your favorite of 3 or more.
+            </p>
+            <p>
+                And it is that simple:
+                <ol>
+                    <li>Put your things in the list on the left.</li>
+                    <li>Click &quot;Start sorting!&quot;</li>
+                    <li>Pick the winner from each pair of items that appears.</li>
+                    <li>The ordered list will appear after you've made all your choices.</li>
+                </ol>
+            </p>
         </div>
         <div class="column col-sm-12 col-md-12 col-4">
             <p>Ads? Picture?</p>
