@@ -30,7 +30,8 @@ async def sorter(websocket: websockets.WebSocketServerProtocol) -> None:
                 logger.error(f"Data element «{element!r}» not a string.")
                 raise RuntimeError("Non-string data element found in hello message.")
         logger.debug(f'Hello message passes validation. {len(data):d} items to sort.')
-        await wsQuicksort(data, 0, len(data) - 1, websocket)
+        cache = {}
+        await wsQuicksort(data, 0, len(data) - 1, websocket, cache)
     except RuntimeError as e:
         logger.error(f"Runtime exception received from wsQuicksort. Ending run #{run_id:s}.", exc_info=True)
         await websocket.send(json.dumps({
@@ -50,4 +51,6 @@ async def sorter(websocket: websockets.WebSocketServerProtocol) -> None:
     }))
     logger.info(f'Successfully finished run #{run_id:s} ' + \
                 f'of {len(data):d} items ' + \
-                f'in {timedelta(seconds=time.time() - start_time)!s}.')
+                f'in {timedelta(seconds=time.time() - start_time)!s}. ' + \
+                f"Made {cache['\x10STATS']['interactive']:d} interactive comparisons " + \
+                f"and answered {cache['\x10STATS']['from-cache']:d} from cache.")

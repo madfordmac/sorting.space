@@ -15,6 +15,7 @@ async def wsLess(a: str, b: str, sock: websockets.WebSocketServerProtocol, cache
         if second in cache[first]:
             answer = cache[first][second] == a
             logger.debug(f"Returning cached answer: {answer}")
+            cache['\x10STATS']['from-cache'] += 1 
             return answer
     await sock.send(json.dumps({
         'type': 'compare',
@@ -34,6 +35,7 @@ async def wsLess(a: str, b: str, sock: websockets.WebSocketServerProtocol, cache
     if first not in cache:
         cache[first] = {}
     cache[first][second] = a if answer else b
+    cache['\x10STATS']['interactive'] += 1
     return answer
 
 async def wsPartition(data: list[str], low: int, high: int, sock: websockets.WebSocketServerProtocol, cache: dict[str]) -> int:
@@ -58,6 +60,11 @@ async def wsPartition(data: list[str], low: int, high: int, sock: websockets.Web
 async def wsQuicksort(data: list[str], low: int, high: int, sock: websockets.WebSocketServerProtocol, cache: dict[str] = None) -> None:
     if type(cache) != dict:
         cache = {}
+    if '\x10STATS' not in cache:
+        cache['\x10STATS'] = {
+            'interactive': 0,
+            'from-cache': 0
+        }
     if low < high:
         partition_index = await wsPartition(data, low, high, sock, cache)
         await wsQuicksort(data, low, partition_index, sock, cache)
