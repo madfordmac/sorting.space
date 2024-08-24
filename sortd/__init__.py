@@ -49,8 +49,10 @@ async def sorter(websocket: websockets.WebSocketServerProtocol) -> None:
         'type': 'result',
         'data': data
     }))
+    interactive_count = cache['\x10STATS']['interactive']
+    cache_count = cache['\x10STATS']['from-cache']
     logger.info(f'Successfully finished run #{run_id:s} ' + \
                 f'of {len(data):d} items ' + \
                 f'in {timedelta(seconds=time.time() - start_time)!s}. ' + \
-                f"Made {cache['\x10STATS']['interactive']:d} interactive comparisons " + \
-                f"and answered {cache['\x10STATS']['from-cache']:d} from cache.")
+                f"Made {interactive_count:d} interactive comparisons " + \
+                f"and answered {cache_count:d} from cache.")
